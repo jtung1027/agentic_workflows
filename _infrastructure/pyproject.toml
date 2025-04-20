@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "agentic_workflows"  # You can change this later
+version = "0.1.0"
+description = "Agentic workflows"
+authors = ["jtung1027@gmail.com"]  # Update with your details
+
+[tool.poetry.dependencies]
+python = "^3.10"  # Specify your desired Python version
+langchain = "^0.1.0"
+langchain-openai = "^0.1.0"
+ipython = "^8.0.0" # Or specify a different version if needed
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api" 

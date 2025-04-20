@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./_infrastructure
+      dockerfile: Dockerfile
+    # Load environment variables from .env.personal file
+    env_file:
+      - .env.personal
+    volumes:
+      # Mount the entire project directory into /app in the container
+      - .:/app
+    # Keep the container running for development
+    tty: true 
+    # Optional: Expose ports if your app needs them later
+    # ports:
+    #   - "8000:8000" 
