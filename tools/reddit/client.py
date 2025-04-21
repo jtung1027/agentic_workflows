@@ -1,10 +1,11 @@
-import praw
-import os
 import logging
-from typing import Optional
+import os
+
+import praw
 
 # Configure logging - you might want to integrate this with a broader project logger
 logger = logging.getLogger(__name__)
+
 
 class RedditClient:
     """
@@ -13,6 +14,7 @@ class RedditClient:
     Handles initialization using environment variables and provides access
     to the underlying PRAW client instance.
     """
+
     def __init__(self):
         """
         Initializes the RedditClient by creating a PRAW Reddit instance.
@@ -21,7 +23,7 @@ class RedditClient:
         from environment variables.
         The `self.client` attribute will be None if initialization fails.
         """
-        self.client: Optional[praw.Reddit] = None
+        self.client: praw.Reddit | None = None
         try:
             client_id = os.environ["REDDIT_CLIENT_ID"]
             client_secret = os.environ["REDDIT_CLIENT_SECRET"]
@@ -45,14 +47,15 @@ class RedditClient:
 
         except KeyError as e:
             logger.error(f"Missing Reddit environment variable: {e}. Reddit client not initialized.")
-            self.client = None # Ensure client is None on failure
+            self.client = None  # Ensure client is None on failure
         except Exception as e:
             logger.error(f"Failed to initialize PRAW Reddit client: {e}")
-            self.client = None # Ensure client is None on failure
+            self.client = None  # Ensure client is None on failure
 
-    def get_client(self) -> Optional[praw.Reddit]:
+    def get_client(self) -> praw.Reddit | None:
         """Returns the initialized PRAW Reddit client instance, or None if initialization failed."""
         return self.client
+
 
 # Example of how you might manage a single instance (optional)
 # _reddit_client_instance = None

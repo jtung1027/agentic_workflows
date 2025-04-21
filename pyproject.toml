@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "agentic_workflows"  # You can change this later
+version = "0.1.0"
+description = "Agentic workflows"
+authors = ["jtung1027@gmail.com"]  # Update with your details
+
+[tool.poetry.dependencies]
+python = "^3.10"  # Specify your desired Python version
+langchain = "^0.1.0"
+langchain-openai = "^0.1.0"
+ipython = "^8.0.0" # Or specify a different version if needed
+praw = "^7.7.1" # Added Reddit API Wrapper
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.4"
+mypy = "^1.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Match black's default line length
+line-length = 120
+# Assume Python 3.10
+target-version = "py310"
+
+[tool.ruff.lint]
+# Enable flake8 (F), pycodestyle (E, W), isort (I), pyupgrade (UP),
+# flake8-bugbear (B), pep8-naming (N), flake8-comprehensions (C),
+# flake8-simplify (SIM), flake8-use-pathlib (PTH),
+# flake8-type-checking (TCH), ruff-specific rules (RUF).
+select = ["E", "W", "F", "I", "UP", "B", "N", "C", "SIM", "PTH", "TCH", "RUF"]
+ignore = []
+
+# Allow unused variables in __init__.py
+# per-file-ignores = { "__init__.py" = ["F401"] }
+
+[tool.ruff.lint.isort]
+# Adjust based on your actual project structure if needed
+known-first-party = ["agentic_workflows", "agents", "config", "core", "tools", "tests"]
+
+[tool.ruff.format]
+# Use double quotes like black.
+quote-style = "double"
+# Use spaces for indentation.
+indent-style = "space"
+# Skip magic trailing commas.
+skip-magic-trailing-comma = false
+# Detect line endings automatically.
+line-ending = "auto"
+
+[tool.mypy]
+# Ignore missing stubs for specific libraries
+[[tool.mypy.overrides]]
+module = "praw.*"
+ignore_missing_imports = true 

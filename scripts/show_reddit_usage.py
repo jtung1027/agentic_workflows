@@ -1,18 +1,13 @@
 #!/usr/bin/env python
-import logging
-import sys
+# To run this script from the project root directory:
+# python -m scripts.show_reddit_usage
 
-# Add project root to the Python path
-# This allows running the script directly from the scripts directory
-# Adjust the path depth (../) if the scripts directory is moved
-import os
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.insert(0, project_root)
+import logging
 
 from tools.reddit import RedditClient
 
 # Configure basic logging for the script
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 if __name__ == "__main__":
     logging.info("Attempting to create RedditClient...")
@@ -20,7 +15,7 @@ if __name__ == "__main__":
     reddit_client_wrapper = RedditClient()
 
     # Get the actual PRAW client instance
-    praw_client = reddit_client_wrapper.get_client() # or reddit_client_wrapper.client
+    praw_client = reddit_client_wrapper.get_client()  # or reddit_client_wrapper.client
 
     if praw_client:
         logging.info("Reddit client obtained successfully. Testing API call...")
@@ -35,4 +30,4 @@ if __name__ == "__main__":
         except Exception as e:
             logging.error(f"Error fetching from Reddit: {e}")
     else:
-        logging.error("Failed to initialize Reddit client. Check environment variables and logs.") 
+        logging.error("Failed to initialize Reddit client. Check environment variables and logs.")

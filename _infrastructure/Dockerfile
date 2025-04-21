@@ -10,9 +10,9 @@ ENV POETRY_VERSION=1.7.1
 ENV POETRY_HOME="/opt/poetry"
 ENV POETRY_VIRTUALENVS_CREATE=false
 
-# Install poetry
+# Install poetry and make
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl \
+    && apt-get install --no-install-recommends -y curl make \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && apt-get remove -y curl \
     && apt-get clean \
@@ -28,7 +28,8 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock* ./
 
 # Install dependencies
-RUN poetry install --no-root --no-dev
+# Include dev dependencies to make ruff available
+RUN poetry install --no-root
 
 # Copy the rest of the application code (if needed later)
 # COPY . .
