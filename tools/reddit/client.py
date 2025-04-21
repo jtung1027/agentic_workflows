@@ -15,7 +15,7 @@ class RedditClient:
     to the underlying PRAW client instance.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initializes the RedditClient by creating a PRAW Reddit instance.
 

@@ -31,7 +31,7 @@ target-version = "py310"
 # flake8-simplify (SIM), flake8-use-pathlib (PTH),
 # flake8-type-checking (TCH), ruff-specific rules (RUF).
 select = ["E", "W", "F", "I", "UP", "B", "N", "C", "SIM", "PTH", "TCH", "RUF"]
-ignore = []
+ignore = ["SIM108"]
 
 # Allow unused variables in __init__.py
 # per-file-ignores = { "__init__.py" = ["F401"] }
@@ -51,6 +51,8 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.mypy]
+mypy_path = "."
+check_untyped_defs = true
 # Ignore missing stubs for specific libraries
 [[tool.mypy.overrides]]
 module = "praw.*"

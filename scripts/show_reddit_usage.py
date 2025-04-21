@@ -4,7 +4,7 @@
 
 import logging
 
-from tools.reddit import RedditClient
+from agentic_workflows.tools.reddit import RedditClient
 
 # Configure basic logging for the script
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
