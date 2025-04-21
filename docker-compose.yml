@@ -3,8 +3,8 @@ version: '3.8'
 services:
   app:
     build:
-      context: ./_infrastructure
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./_infrastructure/Dockerfile
     # Load environment variables from .env.personal file
     env_file:
       - .env.personal

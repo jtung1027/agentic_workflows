@@ -24,7 +24,7 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 # Set the working directory
 WORKDIR /app
 
-# Copy the dependency files
+# Copy the dependency files from the build context root
 COPY pyproject.toml poetry.lock* ./
 
 # Install dependencies
